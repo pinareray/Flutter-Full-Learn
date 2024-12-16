@@ -11,12 +11,26 @@ import 'package:flutter_full_learn/101/icon_learn.dart';
 import 'package:flutter_full_learn/101/image_learn.dart';
 import 'package:flutter_full_learn/101/indicator_learn.dart';
 import 'package:flutter_full_learn/101/list_tile_learn.dart';
+import 'package:flutter_full_learn/101/list_view_builder.dart';
+import 'package:flutter_full_learn/101/list_view_learn.dart';
+import 'package:flutter_full_learn/101/navigate_detail_learn.dart';
+import 'package:flutter_full_learn/101/navigation_learn.dart';
 import 'package:flutter_full_learn/101/padding_learn.dart';
+import 'package:flutter_full_learn/101/page_view_learn.dart';
 import 'package:flutter_full_learn/101/scaffold_learn.dart';
 import 'package:flutter_full_learn/101/stack_learn.dart';
 import 'package:flutter_full_learn/101/statefull_learn.dart';
+import 'package:flutter_full_learn/101/statefull_life_cycle.dart';
 import 'package:flutter_full_learn/101/stateless_learn.dart';
+import 'package:flutter_full_learn/101/text_field_learn.dart';
 import 'package:flutter_full_learn/101/text_learn_view.dart';
+import 'package:flutter_full_learn/202/model_learn_view.dart';
+import 'package:flutter_full_learn/202/service/service_learn_view.dart';
+import 'package:flutter_full_learn/202/service/service_post_learn_view.dart';
+import 'package:flutter_full_learn/202/tab_learn.dart';
+import 'package:flutter_full_learn/demos/color_demos_view.dart';
+import 'package:flutter_full_learn/demos/color_life_cycle.dart';
+import 'package:flutter_full_learn/demos/my_collections_demos.dart';
 import 'package:flutter_full_learn/demos/note_demos_view.dart';
 import 'package:flutter_full_learn/demos/stack_demo_view.dart';
 
@@ -34,6 +48,13 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
+        tabBarTheme: const TabBarTheme(
+          labelColor: Colors.white, 
+          unselectedLabelColor: Colors.red,
+          indicatorSize: TabBarIndicatorSize.label,),
+
+        bottomAppBarTheme: const BottomAppBarTheme(shape: CircularNotchedRectangle(),),
+
         progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.white),
         listTileTheme: const ListTileThemeData(contentPadding: EdgeInsets.zero),
         cardTheme: CardTheme(
@@ -46,7 +67,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         )
       ),
-      home: const StatefullLearn(),
+      home: const ServicePostLearn(),
     );
   }
 }
