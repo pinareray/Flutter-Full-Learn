@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_full_learn/202/service/comment_learn_view.dart';
 import 'package:flutter_full_learn/202/service/post_model.dart';
+import 'package:flutter_full_learn/202/service/post_service.dart';
 
 class ServiceLearn extends StatefulWidget {
   const ServiceLearn({super.key});
@@ -19,12 +21,16 @@ class _ServiceLearnState extends State<ServiceLearn> {
   late final Dio _dio;
   final _baseUrl = 'https://jsonplaceholder.typicode.com/';
 
+//test edilebilir kod
+  late final IPostService _postService;
+
   @override
   void initState() {
     super.initState();
     _dio = Dio(BaseOptions(baseUrl: _baseUrl));
+    _postService = PostService();
     name = 'Pinar';
-    fetchPostItems();
+    fetchPostItemsAdvance();
   }
 
   void _changeLoading(){
@@ -52,17 +58,7 @@ class _ServiceLearnState extends State<ServiceLearn> {
 
  Future<void> fetchPostItemsAdvance() async {  //Dataları çekeceğiz.
     _changeLoading();
-    final response = await _dio.get('posts'); //Böyle yazmamamız gerek
-
-    if (response.statusCode == HttpStatus.ok) {
-      final _datas = response.data;
-
-      if (_datas is List) {
-        setState(() {
-          _items = _datas.map((e) => PostModel.fromJson(e)).toList();
-        });
-      }
-    }
+    _items = await _postService.fetchPostItemsAdvance();
     _changeLoading();
   }
 
@@ -75,7 +71,8 @@ class _ServiceLearnState extends State<ServiceLearn> {
         title: Text(name ?? ''),
         actions: [_isLoading ? const CircularProgressIndicator.adaptive() : SizedBox.shrink()],
       ),
-      body: ListView.builder(
+      body: _items == null ? const Placeholder()
+       : ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         itemCount: _items?.length ?? 0,
         itemBuilder: (context, index) {
@@ -99,6 +96,9 @@ class _PostCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.only(bottom: 20),
       child: ListTile(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => CommentsLearnView(postId: _model?.id,)));
+        },
         title: Text(_model?.title ?? ''),
         subtitle:Text(_model?.body ?? ''),
       ),
