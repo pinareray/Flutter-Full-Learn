@@ -24,11 +24,20 @@ import 'package:flutter_full_learn/101/statefull_life_cycle.dart';
 import 'package:flutter_full_learn/101/stateless_learn.dart';
 import 'package:flutter_full_learn/101/text_field_learn.dart';
 import 'package:flutter_full_learn/101/text_learn_view.dart';
+import 'package:flutter_full_learn/202/alert_learn.dart';
+import 'package:flutter_full_learn/202/animated_learn_view.dart';
+import 'package:flutter_full_learn/202/cache/secure_context/share_context_learn.dart';
+import 'package:flutter_full_learn/202/cache/shared_learn_cache.dart';
+import 'package:flutter_full_learn/202/cache/shared_list_cache.dart';
+import 'package:flutter_full_learn/202/form_learn_view.dart';
+import 'package:flutter_full_learn/202/image_learn_202.dart';
 import 'package:flutter_full_learn/202/model_learn_view.dart';
+import 'package:flutter_full_learn/202/oop_learn_view.dart';
 import 'package:flutter_full_learn/202/package/loading_bar.dart';
 import 'package:flutter_full_learn/202/package_learn_view.dart';
 import 'package:flutter_full_learn/202/service/service_learn_get_view.dart';
 import 'package:flutter_full_learn/202/service/service_post_learn_view.dart';
+import 'package:flutter_full_learn/202/sheet_learn.dart';
 import 'package:flutter_full_learn/202/tab_learn.dart';
 import 'package:flutter_full_learn/202/theme/light_theme.dart';
 import 'package:flutter_full_learn/202/theme_learn_view.dart';
@@ -43,7 +52,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key:key);
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -52,7 +61,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: LighTheme().theme,
-       /* tabBarTheme: const TabBarTheme(
+      /* tabBarTheme: const TabBarTheme(
           labelColor: Colors.white, 
           unselectedLabelColor: Colors.red,
           indicatorSize: TabBarIndicatorSize.label,),
@@ -70,11 +79,8 @@ class MyApp extends StatelessWidget {
           systemOverlayStyle: SystemUiOverlayStyle.light,
           elevation: 0,
         )), */
-      
-      home: const ThemeLearnView(),
+
+      home: const AlertLearn(),
     );
   }
 }
-
-
-
