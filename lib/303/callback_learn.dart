@@ -2,6 +2,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_full_learn/product/widget/button/answer_button.dart';
 import 'package:flutter_full_learn/product/widget/callback_dropdown.dart';
 
 class CallBackLearn extends StatefulWidget {
@@ -20,7 +21,12 @@ class _CallBackLearnState extends State<CallBackLearn> {
         children: [
           CallbackDropdown(onUserSelected: (CallBackUser user) {
             print(user);
-          })
+          }),
+          AnswerButton(
+            onNumber: (number) {
+              return number % 3 == 1;
+            },
+          )
         ],
       ),
     );
